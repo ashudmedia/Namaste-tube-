@@ -3,403 +3,112 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Namaste Tube - Namaste Karo India Badho India</title>
-  <meta name="description" content="Namaste Tube - Bharat ka apna video platform. Shorts, Live, Videos, Posts dekho aur banao.">
-  <meta property="og:title" content="Namaste Tube">
-  <meta property="og:description" content="Namaste Karo India Badho India">
+  <title>Namaste Tube - Namaste Karo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
   <style>
     :root {
+      --bg: #0F0F0F;
+      --bg-secondary: #272727;
+      --text: #F1F1F1;
+      --text-secondary: #AAAAAA;
+      --border: #3F3F3F;
+      --hover: #3D3D3D;
       --saffron: #FF9933;
-      --white: #FFFFFF;
       --green: #138808;
       --chakra-blue: #000080;
-      --bg: #0f0f0f;
-      --card: #1f1f1f;
-      --border: #303030;
     }
+
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    
     body {
-      font-family: 'Segoe UI', Arial, sans-serif;
+      font-family: 'Roboto', sans-serif;
       background: var(--bg);
-      color: var(--white);
+      color: var(--text);
     }
-    header {
-      background: linear-gradient(90deg, var(--saffron), var(--white), var(--green));
-      padding: 12px 24px;
+
+    /* Navbar */
+    .navbar {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      padding: 0 16px;
+      height: 56px;
+      background: var(--bg);
       position: sticky;
       top: 0;
       z-index: 100;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+      border-bottom: 1px solid var(--border);
     }
+
     .logo {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 24px;
+      font-size: 20px;
       font-weight: 700;
-      color: var(--chakra-blue);
-      text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
+      cursor: pointer;
     }
-    .logo span { font-size: 28px; }
-    .slogan {
-      font-size: 12px;
-      color: var(--chakra-blue);
-      font-weight: 600;
-    }
+    .logo .saffron { color: var(--saffron); }
+    .logo .green { color: var(--green); }
+
     .search-bar {
-      flex: 1;
-      max-width: 600px;
-      margin: 0 40px;
       display: flex;
+      max-width: 600px;
+      flex: 1;
+      margin: 0 40px;
     }
     .search-bar input {
-      width: 100%;
+      flex: 1;
       padding: 10px 16px;
-      border: 1px solid var(--chakra-blue);
-      border-radius: 20px 0 0 20px;
-      background: var(--white);
-      color: #000;
-    }
-    .glossy-btn {
-      padding: 10px 20px;
-      border: none;
-      border-radius: 20px;
-      background: linear-gradient(180deg, var(--saffron), #e88822);
-      color: var(--white);
-      font-weight: 600;
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 4px 15px rgba(255,153,51,0.4), inset 0 1px 0 rgba(255,255,255,0.4);
-      transition: transform 0.2s;
-    }
-    .glossy-btn::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
-      transform: rotate(45deg);
-      animation: shine 3s infinite;
-    }
-    @keyframes shine {
-      0% { transform: translateX(-100%) rotate(45deg); }
-      100% { transform: translateX(100%) rotate(45deg); }
-    }
-    .glossy-btn:hover { transform: translateY(-2px); }
-    .search-bar .glossy-btn { border-radius: 0 20px 20px 0; }
-    
-    nav {
-      display: flex;
-      gap: 8px;
-      padding: 12px 24px;
-      background: var(--card);
-      border-bottom: 1px solid var(--border);
-      overflow-x: auto;
-    }
-    .tab {
-      padding: 8px 16px;
-      border-radius: 18px;
-      background: var(--bg);
+      background: #121212;
       border: 1px solid var(--border);
+      border-radius: 40px 0 0 40px;
+      color: var(--text);
+      outline: none;
+    }
+    .search-bar button {
+      padding: 0 20px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-left: 0;
+      border-radius: 0 40px 40px 0;
       cursor: pointer;
-      white-space: nowrap;
+      color: var(--text);
     }
-    .tab.active {
-      background: var(--green);
-      border-color: var(--green);
-    }
-    
-    main {
-      display: grid;
-      grid-template-columns: 240px 1fr;
-      gap: 24px;
-      padding: 24px;
-      max-width: 1600px;
-      margin: 0 auto;
-    }
-    aside {
+
+    .nav-actions {
       display: flex;
-      flex-direction: column;
       gap: 8px;
     }
-    .sidebar-item {
-      padding: 12px 16px;
-      border-radius: 10px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .sidebar-item:hover { background: var(--card); }
-    
-    .video-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 20px;
-    }
-    .video-card {
-      background: var(--card);
-      border-radius: 12px;
-      overflow: hidden;
-      cursor: pointer;
-      transition: transform 0.2s;
-    }
-    .video-card:hover { transform: scale(1.02); }
-    .thumbnail {
-      width: 100%;
-      aspect-ratio: 16/9;
-      background: linear-gradient(135deg, var(--saffron), var(--green));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 48px;
-    }
-    .video-info { padding: 12px; }
-    .video-title { font-weight: 600; margin-bottom: 8px; }
-    .channel-name { font-size: 14px; color: #aaa; }
-    .video-stats { font-size: 12px; color: #aaa; margin-top: 4px; }
-    
-    .shorts-container {
-      display: none;
-      height: calc(100vh - 120px);
-      overflow-y: scroll;
-      scroll-snap-type: y mandatory;
-    }
-    .short {
-      height: 100%;
-      scroll-snap-align: start;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(180deg, var(--chakra-blue), #000);
-      position: relative;
-    }
-    .short-video {
-      height: 90%;
-      aspect-ratio: 9/16;
-      background: var(--card);
-      border-radius: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 64px;
-    }
-    .short-actions {
-      position: absolute;
-      right: 20px;
-      bottom: 100px;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-    .action-btn {
-      width: 48px;
-      height: 48px;
+    .icon-btn {
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
-      background: rgba(255,255,255,0.1);
       border: none;
-      color: white;
-      font-size: 24px;
+      background: transparent;
+      color: var(--text);
       cursor: pointer;
-    }
-    
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.8);
-      z-index: 1000;
+      display: flex;
       align-items: center;
       justify-content: center;
     }
-    .modal-content {
-      background: var(--card);
-      padding: 24px;
-      border-radius: 16px;
-      width: 90%;
-      max-width: 500px;
-    }
-    .modal h2 { margin-bottom: 16px; }
-    .modal input, .modal textarea {
-      width: 100%;
-      padding: 12px;
-      margin: 8px 0;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      color: white;
-    }
-    @media (max-width: 768px) {
-      main { grid-template-columns: 1fr; }
-      aside { display: none; }
-      .search-bar { margin: 0 10px; }
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <div>
-      <div class="logo"><span>🙏</span> नमस्ते Tube</div>
-      <div class="slogan">Namaste Karo India Badho India</div>
-    </div>
-    <div class="search-bar">
-      <input type="text" placeholder="Search करो..." id="searchInput">
-      <button class="glossy-btn" onclick="searchVideo()">🔍</button>
-    </div>
-    <button class="glossy-btn" onclick="openUpload()">⬆️ Upload</button>
-  </header>
+    .icon-btn:hover { background: var(--hover); }
 
-  <nav>
-    <div class="tab active" onclick="switchTab('home')">Home</div>
-    <div class="tab" onclick="switchTab('shorts')">Shorts</div>
-    <div class="tab" onclick="switchTab('live')">Live</div>
-    <div class="tab" onclick="switchTab('trending')">Trending</div>
-    <div class="tab" onclick="switchTab('posts')">Posts</div>
-  </nav>
-
-  <main>
-    <aside>
-      <div class="sidebar-item" onclick="switchTab('home')">🏠 Home</div>
-      <div class="sidebar-item" onclick="switchTab('shorts')">⚡ Shorts</div>
-      <div class="sidebar-item" onclick="switchTab('subs')">📺 Subscriptions</div>
-      <div class="sidebar-item" onclick="switchTab('channel')">👤 Your Channel</div>
-      <div class="sidebar-item" onclick="switchTab('chat')">💬 Chat</div>
-      <hr style="border-color: var(--border); margin: 8px 0;">
-      <div class="sidebar-item">⚙️ Settings</div>
-    </aside>
-
-    <section id="mainContent">
-      <div id="homeSection" class="video-grid"></div>
-      <div id="shortsSection" class="shorts-container"></div>
-    </section>
-  </main>
-
-  <div class="modal" id="uploadModal">
-    <div class="modal-content">
-      <h2>Video Upload करो</h2>
-      <input type="text" id="videoTitle" placeholder="Title">
-      <textarea id="videoDesc" placeholder="Description + #tags"></textarea>
-      <input type="file" id="videoFile" accept="video/*">
-      <p id="copyrightStatus" style="margin: 12px 0; color: var(--saffron);"></p>
-      <button class="glossy-btn" onclick="checkCopyright()">Copyright Check</button>
-      <button class="glossy-btn" onclick="uploadVideo()" style="background: linear-gradient(180deg, var(--green), #0f6b06);">Upload</button>
-      <button onclick="closeUpload()" style="margin-left: 8px; background: #666;">Cancel</button>
-    </div>
-  </div>
-
-  <script>
-    let videos = JSON.parse(localStorage.getItem('namasteVideos') || '[]');
-    let shorts = [
-      {title: "Incredible India 🇮🇳", channel: "Travel India", views: "1.2M"},
-      {title: "Desi Jugaad", channel: "Tech India", views: "890K"},
-      {title: "Bharat Darshan", channel: "Culture Hub", views: "2.1M"}
-    ];
-
-    function renderVideos() {
-      const grid = document.getElementById('homeSection');
-      if(videos.length === 0) {
-        videos = [
-          {title: "Welcome to Namaste Tube", channel: "Namaste Team", views: "10K views", time: "1 day ago", emoji: "🎉"},
-          {title: "India's Tech Revolution", channel: "Digital Bharat", views: "50K views", time: "3 days ago", emoji: "💻"},
-          {title: "Street Food Tour Delhi", channel: "Foodie India", views: "100K views", time: "1 week ago", emoji: "🍛"}
-        ];
-      }
-      grid.innerHTML = videos.map(v => `
-        <div class="video-card">
-          <div class="thumbnail">${v.emoji || '🎬'}</div>
-          <div class="video-info">
-            <div class="video-title">${v.title}</div>
-            <div class="channel-name">${v.channel}</div>
-            <div class="video-stats">${v.views} • ${v.time}</div>
-            <div style="margin-top: 12px; display: flex; gap: 8px;">
-              <button class="glossy-btn" style="padding: 6px 12px; font-size: 12px;" onclick="likeVideo()">👍 Like</button>
-              <button class="glossy-btn" style="padding: 6px 12px; font-size: 12px; background: linear-gradient(180deg, var(--green), #0f6b06);" onclick="subscribe()">Subscribe</button>
-            </div>
-          </div>
-        </div>
-      `).join('');
+    /* Upload Dropdown */
+    .upload-menu {
+      position: absolute;
+      top: 50px;
+      right: 60px;
+      background: var(--bg-secondary);
+      border-radius: 12px;
+      padding: 8px 0;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.4);
+      display: none;
     }
-
-    function renderShorts() {
-      const container = document.getElementById('shortsSection');
-      container.innerHTML = shorts.map(s => `
-        <div class="short">
-          <div class="short-video">${s.emoji || '⚡'}</div>
-          <div class="short-actions">
-            <button class="action-btn" onclick="likeVideo()">👍</button>
-            <button class="action-btn">💬</button>
-            <button class="action-btn">↗️</button>
-          </div>
-          <div style="position: absolute; bottom: 40px; left: 20px; color: white;">
-            <div style="font-weight: 600;">@${s.channel}</div>
-            <div>${s.title}</div>
-            <div style="font-size: 14px; margin-top: 8px;">${s.views} views</div>
-          </div>
-        </div>
-      `).join('');
-    }
-
-    function switchTab(tab) {
-      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-      event.target.classList.add('active');
-      document.getElementById('homeSection').style.display = tab === 'home' ? 'grid' : 'none';
-      document.getElementById('shortsSection').style.display = tab === 'shorts' ? 'block' : 'none';
-      if(tab === 'shorts') renderShorts();
-    }
-
-    function openUpload() {
-      document.getElementById('uploadModal').style.display = 'flex';
-    }
-    function closeUpload() {
-      document.getElementById('uploadModal').style.display = 'none';
-    }
-
-    function checkCopyright() {
-      const status = document.getElementById('copyrightStatus');
-      status.textContent = 'Checking...';
-      setTimeout(() => {
-        status.textContent = '✅ Copyright Clear! Video safe to upload.';
-        status.style.color = 'var(--green)';
-      }, 1500);
-    }
-
-    function uploadVideo() {
-      const title = document.getElementById('videoTitle').value;
-      if(!title) return alert('Title daalo');
-      videos.unshift({
-        title: title,
-        channel: "Your Channel",
-        views: "0 views",
-        time: "Just now",
-        emoji: "📹"
-      });
-      localStorage.setItem('namasteVideos', JSON.stringify(videos));
-      closeUpload();
-      renderVideos();
-      alert('Video uploaded! 🎉');
-    }
-
-    function likeVideo() {
-      alert('Liked! 👍');
-    }
-    function subscribe() {
-      alert('Subscribed! 🔔 Jai Hind!');
-    }
-    function searchVideo() {
-      const query = document.getElementById('searchInput').value;
-      alert(`Searching for: ${query}`);
-    }
-
-    renderVideos();
-  </script>
-</body>
-</html>
+    .upload-menu.active { display: block; }
+    .upload-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 10px 16px;
+      cursor: pointer;
+      min
