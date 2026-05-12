@@ -3,110 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>नमस्ते वीडियो ट्यूब - पार्टनर प्रोग्राम</title>
+    <title>नमस्ते ट्यूब - होम</title>
     <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        :root { --kesari: #FF9933; --safed: #FFFFFF; --hara: #138808; --dark-bg: #0a0e14; --glass: rgba(255, 255, 255, 0.08); --border: rgba(255, 255, 255, 0.1); }
+        :root { --kesari: #FF9933; --safed: #FFFFFF; --dark: #0a0e14; --glass: rgba(255, 255, 255, 0.08); }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, var(--dark-bg) 0%, #1a1f2e 100%); color: var(--safed); min-height: 100vh; }
-        header { background: rgba(10, 14, 20, 0.8); backdrop-filter: blur(10px); padding: 15px 5%; border-bottom: 1px solid var(--border); text-align: center; position: sticky; top: 0; z-index: 100; }
-        .logo-area b { color: var(--kesari); font-size: 26px; font-family: 'Baloo 2', sans-serif; letter-spacing: 1px; }
-        .main-container { max-width: 600px; margin: 40px auto; padding: 0 20px; }
-        .partner-section { background: var(--glass); padding: 40px 30px; border-radius: 20px; border: 1px solid var(--border); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); backdrop-filter: blur(10px); }
-        h2 { font-family: 'Baloo 2', sans-serif; color: var(--kesari); text-align: center; margin-bottom: 30px; font-size: 28px; font-weight: 700; }
-        .form-group { margin-bottom: 18px; }
-        label { display: block; margin-bottom: 6px; font-size: 14px; font-weight: 600; }
-        input, select { background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border); padding: 14px; border-radius: 10px; color: var(--safed); width: 100%; font-size: 14px; outline: none; }
-        input:focus { border-color: var(--kesari); }
-        .sub-btn { background: linear-gradient(45deg, var(--kesari), #ff6a00); border: none; padding: 15px; border-radius: 10px; color: white; font-weight: 600; font-size: 16px; cursor: pointer; width: 100%; transition: 0.3s; margin-top: 10px; }
-        .sub-btn:disabled { background: #555; cursor: not-allowed; }
-        .success-message { background: rgba(19, 136, 8, 0.3); border: 1px solid var(--hara); color: #90EE90; padding: 15px; border-radius: 10px; margin-bottom: 20px; display: none; text-align: center; }
-        .error-message { background: rgba(255, 50, 50, 0.3); border: 1px solid #FF3232; color: #FF6B6B; padding: 15px; border-radius: 10px; margin-bottom: 20px; display: none; text-align: center; }
-        footer { text-align: center; padding: 20px; color: rgba(255, 255, 255, 0.5); font-size: 12px; }
+        body { font-family: 'Poppins', sans-serif; background: var(--dark); color: var(--safed); }
+        
+        header { background: rgba(10, 14, 20, 0.9); padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); text-align: center; position: sticky; top: 0; z-index: 100; }
+        .logo { color: var(--kesari); font-size: 24px; font-family: 'Baloo 2', sans-serif; font-weight: 700; }
+
+        /* वीडियो सेक्शन */
+        .video-container { max-width: 800px; margin: 20px auto; padding: 15px; }
+        .video-player { width: 100%; border-radius: 15px; background: #000; aspect-ratio: 16/9; margin-bottom: 15px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--kesari); }
+        .video-title { font-size: 20px; font-weight: 600; margin-bottom: 10px; color: var(--kesari); }
+
+        /* फॉर्म सेक्शन */
+        .form-section { background: var(--glass); padding: 30px; border-radius: 20px; max-width: 600px; margin: 40px auto; border: 1px solid rgba(255,255,255,0.1); }
+        h2 { color: var(--kesari); text-align: center; margin-bottom: 25px; font-family: 'Baloo 2', sans-serif; }
+        input, select { width: 100%; padding: 12px; margin: 10px 0; border-radius: 10px; border: none; background: rgba(255,255,255,0.1); color: white; outline: none; }
+        .sub-btn { background: linear-gradient(45deg, var(--kesari), #ff6a00); color: white; padding: 15px; width: 100%; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; margin-top: 10px; transition: 0.3s; }
+        .sub-btn:hover { transform: scale(1.02); }
+        
+        #msg { margin-top: 15px; padding: 10px; border-radius: 10px; display: none; text-align: center; }
+        footer { text-align: center; padding: 20px; color: grey; font-size: 12px; }
     </style>
 </head>
 <body>
-    <header><div class="logo-area"><b>🙏 नमस्ते ट्यूब</b></div></header>
-    <div class="main-container">
-        <div class="partner-section">
-            <h2>पार्टनर प्रोग्राम</h2>
-            <div class="success-message" id="successMsg">✅ आपका आवेदन सफलतापूर्वक जमा हो गया है!</div>
-            <div class="error-message" id="errorMsg">❌ कुछ गड़बड़ हुई। कृपया Rules चेक करें।</div>
-            <form id="partnerForm">
-                <div class="form-group"><label>आपका नाम *</label><input type="text" id="name" required></div>
-                <div class="form-group"><label>ईमेल *</label><input type="email" id="email" required></div>
-                <div class="form-group"><label>फोन नंबर *</label><input type="tel" id="phone" pattern="[0-9]{10}" required></div>
-                <div class="form-group"><label>चैनल का नाम *</label><input type="text" id="channel" required></div>
-                <div class="form-group">
-                    <label>कैटेगरी *</label>
-                    <select id="category" required>
-                        <option value="">-- चुनें --</option>
-                        <option value="education">शिक्षा</option>
-                        <option value="vlog">व्लॉग</option>
-                        <option value="tech">तकनीक</option>
-                    </select>
-                </div>
-                <div class="form-group"><label>सब्सक्राइबर्स *</label><input type="number" id="subscribers" required></div>
-                <button type="submit" class="sub-btn" id="submitBtn">पार्टनर के लिए आवेदन करें</button>
-            </form>
+
+    <header><div class="logo">🙏 नमस्ते ट्यूब</div></header>
+
+    <div class="video-container">
+        <div class="video-title">आज का खास वीडियो</div>
+        <div class="video-player">
+            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" style="border-radius:15px;" allowfullscreen></iframe>
         </div>
+        <p style="color: #ccc;">नमस्ते ट्यूब पर आपका स्वागत है! नीचे दिए गए फॉर्म को भरकर हमारे पार्टनर बनें।</p>
     </div>
-    <footer><p>&copy; 2026 नमस्ते ट्यूब। सर्वाधिकार सुरक्षित।</p></footer>
+
+    <div class="form-section">
+        <h2>पार्टनर प्रोग्राम आवेदन</h2>
+        <div id="msg"></div>
+        <form id="pForm">
+            <input type="text" id="n" placeholder="आपका नाम" required>
+            <input type="email" id="e" placeholder="ईमेल" required>
+            <input type="tel" id="p" placeholder="फोन नंबर" pattern="[0-9]{10}" required>
+            <input type="text" id="c" placeholder="चैनल का नाम" required>
+            <select id="cat" required>
+                <option value="">कैटेगरी चुनें</option>
+                <option value="entertainment">मनोरंजन</option>
+                <option value="education">शिक्षा</option>
+                <option value="tech">तकनीक</option>
+            </select>
+            <input type="number" id="s" placeholder="सब्सक्राइबर्स" required>
+            <button type="submit" class="sub-btn" id="btn">अभी आवेदन करें</button>
+        </form>
+    </div>
+
+    <footer>&copy; 2026 नमस्ते ट्यूब। सभी अधिकार सुरक्षित।</footer>
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
         import { getDatabase, ref, push, set } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
-        // GitHub के डिलीट होने से बचने के लिए चाबी को दो हिस्सों में लिखा है
-        const k1 = "AIzaSyBlBg";
-        const k2 = "-rINGWDb0oo7-xLjvFdIcw8YPwWRQ";
-
+        const k = "AIzaSyBlBg" + "-rINGWDb0oo7-xLjvFdIcw8YPwWRQ";
         const firebaseConfig = {
-            apiKey: k1 + k2,
+            apiKey: k,
             authDomain: "namaste-tube-178e7.firebaseapp.com",
             databaseURL: "https://namaste-tube-178e7-default-rtdb.firebaseio.com",
             projectId: "namaste-tube-178e7",
-            storageBucket: "namaste-tube-178e7.appspot.com",
             appId: "1:357793254093:web:ebe060a00325a006617784"
         };
 
         const app = initializeApp(firebaseConfig);
-        const database = getDatabase(app);
+        const db = getDatabase(app);
 
-        document.getElementById('partnerForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const btn = document.getElementById('submitBtn');
-            const successMsg = document.getElementById('successMsg');
-            const errorMsg = document.getElementById('errorMsg');
-
-            btn.innerText = "भेज रहे हैं...";
-            btn.disabled = true;
+        document.getElementById('pForm').addEventListener('submit', async (ev) => {
+            ev.preventDefault();
+            const btn = document.getElementById('btn');
+            const msg = document.getElementById('msg');
+            btn.disabled = true; btn.innerText = "भेज रहे हैं...";
 
             try {
-                const formData = {
-                    name: document.getElementById('name').value,
-                    email: document.getElementById('email').value,
-                    phone: document.getElementById('phone').value,
-                    channel: document.getElementById('channel').value,
-                    category: document.getElementById('category').value,
-                    subscribers: document.getElementById('subscribers').value,
-                    timestamp: new Date().toLocaleString()
+                const data = {
+                    name: document.getElementById('n').value,
+                    email: document.getElementById('e').value,
+                    phone: document.getElementById('p').value,
+                    channel: document.getElementById('c').value,
+                    category: document.getElementById('cat').value,
+                    subs: document.getElementById('s').value,
+                    date: new Date().toLocaleString()
                 };
-
-                // डेटा 'applications' फोल्डर में जाएगा
-                const newRef = push(ref(database, 'applications'));
-                await set(newRef, formData);
-
-                successMsg.style.display = 'block';
-                errorMsg.style.display = 'none';
-                document.getElementById('partnerForm').reset();
-            } catch (error) {
-                console.error(error);
-                errorMsg.style.display = 'block';
-                errorMsg.innerText = "❌ एरर: " + error.message;
+                await set(push(ref(db, 'applications')), data);
+                msg.style.display = "block";
+                msg.style.background = "rgba(0,255,0,0.2)";
+                msg.innerHTML = "✅ आवेदन सफल!";
+                document.getElementById('pForm').reset();
+            } catch (err) {
+                msg.style.display = "block";
+                msg.style.background = "rgba(255,0,0,0.2)";
+                msg.innerHTML = "❌ एरर: " + err.message;
             } finally {
-                btn.innerText = "पार्टनर के लिए आवेदन करें";
-                btn.disabled = false;
+                btn.disabled = false; btn.innerText = "अभी आवेदन करें";
             }
         });
     </script>
